@@ -1,3 +1,4 @@
+
 function isAuth(req,res,next){
     if(req.isAuthenticated()){
         next()
@@ -5,3 +6,5 @@ function isAuth(req,res,next){
         res.render("login")
     }
 }
+
+export default isAuth

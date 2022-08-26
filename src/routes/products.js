@@ -1,17 +1,9 @@
 import {Router} from 'express'
 import { productsDao as api } from '../database/daos/index.js'
 import { usersDao } from '../database/daos/index.js'
+import isAuth from "../middleware/isAuth";
 
 const router = Router()
-
-function isAuth(req,res,next){
-    if(req.isAuthenticated()){
-        next()
-    } else {
-        res.render("login")
-    }
-}
-// tengo que agregar el middleware de auth a todas las rutas get
 
 router.get('/', isAuth, async (req,res)=>{
     try {

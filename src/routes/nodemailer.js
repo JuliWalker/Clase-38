@@ -2,17 +2,11 @@ import dotenv from 'dotenv'
 import {Router} from 'express'
 import nodemailer from 'nodemailer'
 import { usersDao as api } from '../database/daos/index.js'
+import isAuth from "../middleware/isAuth";
 
 dotenv.config()
 const router = Router();
 
-function isAuth(req,res,next){
-    if(req.isAuthenticated()){
-        next()
-    } else {
-        res.render("login")
-    }
-}
 
 router.get('/registro', isAuth, async (req,res)=>{
     try {
